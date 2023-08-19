@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href=" learn.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style = "background-color: #414141;">
+   <div class="button" >
+    <button id="start">
+        start
+    </button >
+    <button id="stop">
+        stop
+    </button>
+   </div>
+   
+</body>
+<script>
+    const randomcolor = function () {
+        const hex = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += hex[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    };
+
+
+    let intervalid
+
+        const startchangecolor = function () {
+
+            if (intervalid == null) {
+                intervalid = setInterval(changebgcolor, 500);
+            }
+
+            function changebgcolor() {
+                document.body.style.backgroundColor = randomcolor();
+            }
+        }
+
+    const stopchangecolor = function () {
+            clearInterval(intervalid);
+            intervalid = null;
+        }
+
+    document.getElementById("start").addEventListener("click", startchangecolor);
+    document.getElementById("stop").addEventListener("click",stopchangecolor);
+</script>
+
+</html>
